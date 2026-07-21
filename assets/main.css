@@ -1,129 +1,623 @@
-/* main.css */
-
-/* These are the colors and fonts used throughout the webpage.
- * I've listed them here so that a user may easily
- * do a search-and-replace for these to change the site theme.
- *   'Roboto',sans-serif; Font for the title text
- *   'Roboto-Slab',serif; Font for the body text 
- *   #001f5b; Background color of the site
- *   #505050; Foreground (text) color of the site
- *   #52739e; Navy, "Template" in the logo, current page in navigation, special titles in the Program
- *   #b2132e; Reddish, "Conference" in the logo, hover color for links
- *   #813c54; Heading color, titles in the Program
- *   #b8860b; Dark Goldenrod, color for links
+* main_unifi.css
+ * Revisione del template secondo l'identità visiva UniFi.
+ *
+ * Colori istituzionali:
+ *   Nero:       #000000
+ *   Blu UniFi:  #001f5b  (Pantone 281 C; RGB 0, 31, 91)
+ *
+ * Tipografia:
+ *   Helvetica Neue per i testi dell'immagine coordinata.
+ *   Il marchio UniFi deve essere inserito come file grafico ufficiale:
+ *   non ricostruirlo con testo/CSS e non modificarne colori o proporzioni.
  */
 
-@import url('https://fonts.googleapis.com/css?family=Roboto%7CRoboto+Slab');
-
-*{
-    border:0;
-    font:inherit;
-    font-size:1em;
-    margin:0;
-    padding:0;
-    vertical-align:baseline;
+:root {
+    --unifi-blue: #001f5b;
+    --unifi-black: #000000;
+    --unifi-white: #ffffff;
+    --unifi-text: #262626;
+    --unifi-muted: #5f6368;
+    --unifi-light: #f3f4f6;
+    --unifi-border: #d7d9dd;
+    --unifi-content-width: 1100px;
+    --unifi-text-width: 900px;
+    --unifi-radius: 2px;
 }
 
-body{
-    background-color: #001f5b;
-    background-size: cover;
-    background-attachment: fixed;
-    color: #505050; 
-    text-align:left;
-    font-family:'Roboto',sans-serif;
-    font-size:1em;
-    line-height:1.5em;
-    margin: 60px auto;
-    width: 1000px;
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
-a{color: #b8860b; text-decoration:none;}
-a.current{color: #52739e;}
-a.current:hover{color: #e82945;}
-a:hover{color: #b2132e;}
-a:active{color: #e82945;}
-h1,h2,h3,h4{clear:left; color: #813c54; margin:1.5em 0em 1em 0em; font-family:'Roboto Slab',serif; text-shadow: 1px 1px 2px #d0d0d0;}
-h1{font-size:2.67em;}
-h2{font-size:2.00em;}
-h3{font-size:1.67em;}
-h4{font-size:1.33em;}
-p{list-style:none; margin:24px auto 24px auto; padding:0px; width:900px; text-align:left;}
-li a, p a {text-decoration:underline; text-decoration-color:#b8860b;}
-ul{list-style:none; margin:24px auto 24px auto; padding:0px; width:800px; text-align:left;}
-ul li{list-style:none; margin:0px auto 0px auto; padding:0px; text-align:left;}
-i,em{font-style:italic;}
-b,strong{font-weight:bold;}
-sup{
-    vertical-align: super;
-    font-size: 0.8em;
-    line-height: 0;
+html {
+    background: var(--unifi-light);
+    scroll-behavior: smooth;
 }
-sub{
-    vertical-align: sub;
-    font-size: 0.8em;
-    line-height: 0;
-}
-table{
-    width: 1000px;
-    margin: 12px auto 24px auto;
-    float: center;
-    /* UNCOMMENT THIS FOR DEBUGGING THE ALIGNMENT */
-    /*border: 1px solid black;*/
-}
-th,td{
+
+body {
+    width: min(100% - 32px, var(--unifi-content-width));
+    margin: 32px auto;
+    padding: 0 0 48px;
+    background: var(--unifi-white);
+    color: var(--unifi-text);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
     text-align: left;
-    /* UNCOMMENT THIS FOR DEBUGGING THE ALIGNMENT */
-    /*border: 1px solid black;*/
+    box-shadow: 0 4px 20px rgb(0 0 0 / 8%);
 }
 
-/* Website Banner */
-.banner {position: relative; font-family:'Roboto Slab',serif;}
-.top-left {font-size:5.33em; color: #505050; background: #001f5b; text-align: center; width: 1000px; height: 67px; position: absolute; padding: 36px 0 0 0; top: 0px;}
-.bottom-right {font-size:2.33em; color: #001f5b; line-height: 1.5em; width: auto; height: 100px; padding: 0px 27px 27px 0px; text-align: right; position: absolute; bottom: 0px; right: 0px; text-shadow: 0px 0px 6px #000000;}
-
-/* Conference Title Logo */
-.title1{color: #EE8CE4; text-shadow: 1px 1px 3px #c0c0c0;} 
-.title2{color: #EE8CE4; text-shadow: 1px 1px 3px #c0c0c0;}
-.year{color: #EE8CE4; font-size:0.67em; font-weight: lighter;}
-
-/* Navigation Links (Home, Registration, etc) */
-table.navigation{width:800px;}
-td.navigation{font-size:1.67em; white-space:nowrap; width:20%; text-align:center; vertical-align:middle; padding:0px 0px 0px 0px;}
-
-/* Sponsor Images */
-table.sponsors{width:800px;}
-td.sponsor{white-space:nowrap; width:33%; text-align:center; vertical-align:middle; padding:0px 0px 0px 0px;}
-td.sponsor img{width: 100%}
-
-/* The Table on the Program Page */
-td.room{padding: 4px 12px 4px 4px; width: 90%; vertical-align:bottom; font-size:1.67em; color: #52739e; height:32px;}
-td.date{white-space:nowrap; width:130px; text-align:right; vertical-align:top; padding:4px 16px 0px 0px;}
-td.title{padding: 4px 12px 4px 4px; width: 90%; vertical-align:top; font-size:1.5em; color: #813c54; height:32px; font-family:'Roboto Slab',serif; text-shadow: 1px 1px 2px #d0d0d0; }
-td.title-special{padding: 4px 12px 4px 4px; width: 90%; vertical-align:top; font-size:1.67em; color: #52739e; height:32px; font-family:'Roboto Slab',serif; text-shadow: 1px 1px 2px #d0d0d0;}
-td.speaker{padding: 4px 12px 4px 4px; font-style: italic; font-size:1em; max-height:999999px}
-td.abstract{padding: 4px 12px 12px 4px; font-size:1em; max-height:999999px}
-td.abstract img{display: block; margin: 4px auto 8px auto}
-table.plenary{padding-top: 8px; background: #ffffff;}
-
-/* Registration and Directions iframes and Images */
-iframe.registration{display:block; margin:1em auto 2em auto; width:700px; height:1400px; border:none;}
-iframe.directions{display:block; margin:1em auto 2em auto; width:800px; height:400px; border:none;}
-img.center{display:block; width:67%; margin:1em auto 2em auto;}
-
-/* Flyer Images */
-table.flyers{width:800px;}
-td.flyer{white-space:nowrap; width:50%; text-align:center; vertical-align:middle; padding:0px 0px 0px 0px;}
-td.sponsor img{width: 100%}
-
-footer{font-size:0.875em; margin-top:12em; text-align:center;}
-
-/* My hacky way of making the site mobile-friendly */
-@media only screen and (max-width: 1100px) {
-    h2{font-size:3.00em;}
-    p{font-size:1.5em; line-height:1.5em;}
-    th,td,tr{font-size:1.5em; line-height:1.5em;}
-    td.date{font-size:1em; padding-top:0.5em;}
-    td.navigation{font-size:1.5em; padding:0px 20px 0px 20px;}
-    table.footer{font-size:0.33em;}
+img,
+svg,
+iframe {
+    max-width: 100%;
 }
 
+img {
+    height: auto;
+}
+
+main,
+section,
+footer,
+body > h1,
+body > h2,
+body > h3,
+body > h4,
+body > p,
+body > ul,
+body > ol,
+body > table {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+main,
+section {
+    width: min(100% - 48px, var(--unifi-text-width));
+}
+
+/* Links */
+a {
+    color: var(--unifi-blue);
+    text-decoration: underline;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.15em;
+}
+
+a:hover {
+    color: var(--unifi-black);
+    text-decoration-thickness: 0.13em;
+}
+
+a:active {
+    color: var(--unifi-black);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--unifi-blue);
+    outline-offset: 3px;
+}
+
+a.current {
+    color: var(--unifi-blue);
+    font-weight: 700;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4 {
+    clear: both;
+    color: var(--unifi-blue);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+    text-shadow: none;
+}
+
+h1 {
+    width: min(100% - 48px, var(--unifi-text-width));
+    margin-top: 2.2rem;
+    margin-bottom: 1.2rem;
+    font-size: clamp(2.1rem, 5vw, 3.25rem);
+    font-weight: 500;
+}
+
+h2 {
+    width: min(100% - 48px, var(--unifi-text-width));
+    margin-top: 2.4rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--unifi-border);
+    font-size: clamp(1.65rem, 3.5vw, 2.25rem);
+}
+
+h3 {
+    width: min(100% - 48px, var(--unifi-text-width));
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    font-size: clamp(1.35rem, 2.8vw, 1.75rem);
+}
+
+h4 {
+    width: min(100% - 48px, var(--unifi-text-width));
+    margin-top: 1.6rem;
+    margin-bottom: 0.6rem;
+    font-size: 1.25rem;
+}
+
+p {
+    width: min(100% - 48px, var(--unifi-text-width));
+    margin: 1rem auto;
+}
+
+ul,
+ol {
+    width: min(100% - 72px, 820px);
+    margin: 1rem auto 1.5rem;
+    padding-left: 1.4rem;
+}
+
+ul {
+    list-style: disc;
+}
+
+ol {
+    list-style: decimal;
+}
+
+li {
+    margin: 0.35rem 0;
+}
+
+li a,
+p a {
+    text-decoration-color: currentColor;
+}
+
+em,
+i {
+    font-style: italic;
+}
+
+strong,
+b {
+    font-weight: 700;
+}
+
+sup,
+sub {
+    position: relative;
+    font-size: 0.75em;
+    line-height: 0;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+/* Tables */
+table {
+    width: min(100% - 48px, 1000px);
+    margin: 1.25rem auto 2rem;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 0.65rem 0.75rem;
+    border-bottom: 1px solid var(--unifi-border);
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    color: var(--unifi-blue);
+    font-weight: 700;
+}
+
+/*
+ * Header istituzionale consigliato.
+ * Inserire qui il file ufficiale del marchio UniFi in versione negativa.
+ */
+.unifi-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    min-height: 128px;
+    padding: 24px 40px;
+    background: var(--unifi-blue);
+    color: var(--unifi-white);
+}
+
+.unifi-brand {
+    flex: 0 0 auto;
+}
+
+.unifi-brand img {
+    display: block;
+    width: clamp(210px, 28vw, 300px);
+    min-width: 151px; /* circa 2,5 cm a 96 dpi */
+}
+
+.unifi-event-name {
+    max-width: 560px;
+    color: var(--unifi-white);
+    font-size: clamp(1.4rem, 3vw, 2.35rem);
+    font-weight: 400;
+    line-height: 1.15;
+    text-align: right;
+}
+
+/* Banner del template originale */
+.banner {
+    position: relative;
+    min-height: 300px;
+    overflow: hidden;
+    background: var(--unifi-blue);
+    color: var(--unifi-white);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.banner > img {
+    display: block;
+    width: 100%;
+    min-height: 300px;
+    object-fit: cover;
+    opacity: 0.34;
+}
+
+.banner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgb(0 31 91 / 96%), rgb(0 31 91 / 58%));
+    pointer-events: none;
+}
+
+.top-left,
+.bottom-right {
+    z-index: 1;
+}
+
+.top-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: min(75%, 780px);
+    height: auto;
+    padding: 34px 40px 20px;
+    background: transparent;
+    color: var(--unifi-white);
+    font-size: clamp(2.2rem, 6vw, 4.8rem);
+    font-weight: 400;
+    line-height: 0.98;
+    text-align: left;
+}
+
+.bottom-right {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: min(72%, 650px);
+    height: auto;
+    padding: 20px 40px 34px;
+    color: var(--unifi-white);
+    font-size: clamp(1.15rem, 3vw, 2rem);
+    line-height: 1.35;
+    text-align: right;
+    text-shadow: none;
+}
+
+/* Titolo dell'evento: niente rosa o colori estranei alla palette UniFi */
+.title1,
+.title2,
+.year {
+    color: var(--unifi-white);
+    text-shadow: none;
+}
+
+.title1,
+.title2 {
+    font-weight: 400;
+}
+
+.year {
+    font-size: 0.62em;
+    font-weight: 300;
+    white-space: nowrap;
+}
+
+/* Navigation */
+table.navigation {
+    width: 100%;
+    margin: 0;
+    border-collapse: collapse;
+    background: var(--unifi-white);
+    border-bottom: 4px solid var(--unifi-blue);
+}
+
+td.navigation {
+    width: auto;
+    padding: 0;
+    border: 0;
+    font-size: 1.05rem;
+    text-align: center;
+    vertical-align: middle;
+    white-space: normal;
+}
+
+td.navigation a {
+    display: block;
+    min-height: 48px;
+    padding: 0.8rem 1rem;
+    color: var(--unifi-blue);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+td.navigation a:hover,
+td.navigation a:focus-visible {
+    background: var(--unifi-light);
+    color: var(--unifi-black);
+}
+
+td.navigation a.current,
+td.navigation a[aria-current="page"] {
+    background: var(--unifi-blue);
+    color: var(--unifi-white);
+}
+
+/* Sponsor images */
+table.sponsors {
+    width: min(100% - 48px, 800px);
+}
+
+td.sponsor {
+    width: 33.333%;
+    padding: 1rem;
+    border-bottom: 0;
+    text-align: center;
+    vertical-align: middle;
+    white-space: normal;
+}
+
+td.sponsor img {
+    width: auto;
+    max-width: 100%;
+    max-height: 110px;
+    object-fit: contain;
+}
+
+/* Program page */
+table.plenary {
+    padding-top: 0.5rem;
+    background: var(--unifi-white);
+}
+
+td.room {
+    width: 90%;
+    height: auto;
+    padding: 1rem 0.75rem 0.35rem;
+    color: var(--unifi-blue);
+    font-size: 1.35rem;
+    font-weight: 700;
+    vertical-align: bottom;
+}
+
+td.date {
+    width: 145px;
+    padding: 1rem 1rem 0.35rem 0.5rem;
+    color: var(--unifi-muted);
+    font-weight: 600;
+    text-align: right;
+    vertical-align: top;
+    white-space: nowrap;
+}
+
+td.title,
+td.title-special {
+    width: 90%;
+    height: auto;
+    padding: 0.35rem 0.75rem;
+    color: var(--unifi-blue);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-shadow: none;
+    vertical-align: top;
+}
+
+td.title-special {
+    padding-top: 0.8rem;
+    border-top: 3px solid var(--unifi-blue);
+    font-size: 1.35rem;
+}
+
+td.speaker {
+    padding: 0.35rem 0.75rem;
+    color: var(--unifi-muted);
+    font-size: 1rem;
+    font-style: italic;
+}
+
+td.abstract {
+    padding: 0.35rem 0.75rem 1.2rem;
+    font-size: 1rem;
+}
+
+td.abstract img {
+    display: block;
+    margin: 0.5rem auto 1rem;
+}
+
+/* Registration and directions */
+iframe.registration,
+iframe.directions {
+    display: block;
+    width: min(100% - 48px, 800px);
+    margin: 1.5rem auto 2rem;
+    border: 1px solid var(--unifi-border);
+}
+
+iframe.registration {
+    height: 1400px;
+}
+
+iframe.directions {
+    height: 450px;
+}
+
+img.center {
+    display: block;
+    width: min(100% - 48px, 720px);
+    margin: 1.5rem auto 2rem;
+}
+
+/* Flyers */
+table.flyers {
+    width: min(100% - 48px, 800px);
+}
+
+td.flyer {
+    width: 50%;
+    padding: 1rem;
+    border-bottom: 0;
+    text-align: center;
+    vertical-align: middle;
+    white-space: normal;
+}
+
+td.flyer img {
+    width: 100%;
+}
+
+footer {
+    width: min(100% - 48px, var(--unifi-text-width));
+    margin: 5rem auto 0;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--unifi-border);
+    color: var(--unifi-muted);
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 760px) {
+    body {
+        width: 100%;
+        margin: 0;
+        box-shadow: none;
+    }
+
+    .unifi-header {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 22px 24px;
+    }
+
+    .unifi-event-name {
+        text-align: left;
+    }
+
+    .banner,
+    .banner > img {
+        min-height: 360px;
+    }
+
+    .top-left {
+        width: 100%;
+        padding: 28px 24px 16px;
+    }
+
+    .bottom-right {
+        width: 100%;
+        padding: 16px 24px 28px;
+        text-align: left;
+    }
+
+    table.navigation,
+    table.navigation tbody,
+    table.navigation tr {
+        display: block;
+    }
+
+    td.navigation {
+        display: inline-block;
+        width: 50%;
+        vertical-align: top;
+    }
+
+    table:not(.navigation),
+    table:not(.navigation) tbody,
+    table:not(.navigation) tr,
+    table:not(.navigation) th,
+    table:not(.navigation) td {
+        max-width: 100%;
+    }
+
+    td.date {
+        width: 110px;
+        white-space: normal;
+    }
+
+    iframe.registration {
+        height: 1100px;
+    }
+}
+
+@media (max-width: 480px) {
+    td.navigation {
+        width: 100%;
+    }
+
+    table.sponsors,
+    table.sponsors tbody,
+    table.sponsors tr,
+    table.flyers,
+    table.flyers tbody,
+    table.flyers tr {
+        display: block;
+    }
+
+    td.sponsor,
+    td.flyer {
+        display: block;
+        width: 100%;
+    }
+}
+
+/* Printing */
+@media print {
+    html,
+    body {
+        background: var(--unifi-white);
+    }
+
+    body {
+        width: 100%;
+        margin: 0;
+        box-shadow: none;
+    }
+
+    a {
+        color: var(--unifi-black);
+    }
+
+    .banner::after {
+        background: rgb(0 31 91 / 85%);
+    }
+}
