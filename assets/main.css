@@ -1,29 +1,24 @@
-* main_unifi.css
- * Revisione del template secondo l'identità visiva UniFi.
- *
- * Colori istituzionali:
- *   Nero:       #000000
- *   Blu UniFi:  #001f5b  (Pantone 281 C; RGB 0, 31, 91)
- *
- * Tipografia:
- *   Helvetica Neue per i testi dell'immagine coordinata.
- *   Il marchio UniFi deve essere inserito come file grafico ufficiale:
- *   non ricostruirlo con testo/CSS e non modificarne colori o proporzioni.
+bash -lc cat > /mnt/data/main_unifi_portal.css <<'CSS'
+/* main_unifi_portal.css
+ * Adattamento del template conferenza ispirato al portale web UniFi.
+ * Mantiene le classi del CSS originale, quindi può sostituire main.css.
  */
 
 :root {
-    --unifi-blue: #001f5b;
-    --unifi-black: #000000;
-    --unifi-white: #ffffff;
-    --unifi-text: #262626;
-    --unifi-muted: #5f6368;
-    --unifi-light: #f3f4f6;
-    --unifi-border: #d7d9dd;
-    --unifi-content-width: 1100px;
-    --unifi-text-width: 900px;
-    --unifi-radius: 2px;
+    --unifi-blue: #00447c;
+    --unifi-blue-dark: #00345f;
+    --unifi-blue-light: #eaf2f7;
+    --unifi-cyan: #1686a7;
+    --unifi-text: #222222;
+    --unifi-muted: #5b6470;
+    --unifi-border: #d7dde2;
+    --unifi-bg: #ffffff;
+    --unifi-bg-soft: #f4f6f7;
+    --content-width: 1180px;
+    --reading-width: 900px;
 }
 
+/* Reset essenziale */
 *,
 *::before,
 *::after {
@@ -31,25 +26,39 @@
 }
 
 html {
-    background: var(--unifi-light);
+    margin: 0;
+    padding: 0;
     scroll-behavior: smooth;
+    background: var(--unifi-bg);
 }
 
 body {
-    width: min(100% - 32px, var(--unifi-content-width));
-    margin: 32px auto;
-    padding: 0 0 48px;
-    background: var(--unifi-white);
+    position: relative;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0 0 64px;
+    background: var(--unifi-bg);
     color: var(--unifi-text);
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 1rem;
-    line-height: 1.6;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
     text-align: left;
-    box-shadow: 0 4px 20px rgb(0 0 0 / 8%);
+}
+
+/* Fascia superiore, come nel portale UniFi */
+body::before {
+    display: block;
+    width: 100%;
+    height: 34px;
+    content: "";
+    background: var(--unifi-blue);
+    border-bottom: 4px solid var(--unifi-cyan);
 }
 
 img,
 svg,
+video,
 iframe {
     max-width: 100%;
 }
@@ -58,9 +67,7 @@ img {
     height: auto;
 }
 
-main,
-section,
-footer,
+/* Contenuto centrato */
 body > h1,
 body > h2,
 body > h3,
@@ -68,328 +75,323 @@ body > h4,
 body > p,
 body > ul,
 body > ol,
-body > table {
+body > table,
+body > iframe,
+body > footer,
+main,
+.content,
+.page-content {
+    width: min(calc(100% - 40px), var(--content-width));
     margin-right: auto;
     margin-left: auto;
 }
 
-main,
-section {
-    width: min(100% - 48px, var(--unifi-text-width));
-}
-
-/* Links */
-a {
-    color: var(--unifi-blue);
-    text-decoration: underline;
-    text-decoration-thickness: 0.08em;
-    text-underline-offset: 0.15em;
-}
-
-a:hover {
-    color: var(--unifi-black);
-    text-decoration-thickness: 0.13em;
-}
-
-a:active {
-    color: var(--unifi-black);
-}
-
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible {
-    outline: 3px solid var(--unifi-blue);
-    outline-offset: 3px;
-}
-
-a.current {
-    color: var(--unifi-blue);
-    font-weight: 700;
-}
-
-/* Typography */
+/* Tipografia */
 h1,
 h2,
 h3,
 h4 {
     clear: both;
-    color: var(--unifi-blue);
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: 600;
-    line-height: 1.2;
+    margin-top: 1.7em;
+    margin-bottom: 0.65em;
+    color: var(--unifi-text);
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: 700;
+    line-height: 1.15;
     text-shadow: none;
 }
 
 h1 {
-    width: min(100% - 48px, var(--unifi-text-width));
-    margin-top: 2.2rem;
-    margin-bottom: 1.2rem;
-    font-size: clamp(2.1rem, 5vw, 3.25rem);
-    font-weight: 500;
+    position: relative;
+    margin-top: 52px;
+    padding-top: 18px;
+    font-size: clamp(2.35rem, 5vw, 4rem);
+    letter-spacing: -0.035em;
+}
+
+h1::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 76px;
+    height: 5px;
+    content: "";
+    background: var(--unifi-blue);
 }
 
 h2 {
-    width: min(100% - 48px, var(--unifi-text-width));
-    margin-top: 2.4rem;
-    margin-bottom: 1rem;
-    padding-bottom: 0.35rem;
-    border-bottom: 1px solid var(--unifi-border);
-    font-size: clamp(1.65rem, 3.5vw, 2.25rem);
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--unifi-blue);
+    color: var(--unifi-blue-dark);
+    font-size: clamp(1.65rem, 3vw, 2.35rem);
+    letter-spacing: -0.02em;
 }
 
 h3 {
-    width: min(100% - 48px, var(--unifi-text-width));
-    margin-top: 2rem;
-    margin-bottom: 0.75rem;
-    font-size: clamp(1.35rem, 2.8vw, 1.75rem);
+    color: var(--unifi-blue-dark);
+    font-size: clamp(1.3rem, 2.4vw, 1.7rem);
 }
 
 h4 {
-    width: min(100% - 48px, var(--unifi-text-width));
-    margin-top: 1.6rem;
-    margin-bottom: 0.6rem;
-    font-size: 1.25rem;
+    font-size: 1.18rem;
 }
 
 p {
-    width: min(100% - 48px, var(--unifi-text-width));
-    margin: 1rem auto;
+    max-width: var(--reading-width);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 1.04rem;
 }
 
 ul,
 ol {
-    width: min(100% - 72px, 820px);
-    margin: 1rem auto 1.5rem;
-    padding-left: 1.4rem;
+    max-width: var(--reading-width);
+    margin-top: 18px;
+    margin-bottom: 24px;
+    padding-left: 1.5rem;
 }
 
 ul {
-    list-style: disc;
+    list-style: square;
 }
 
-ol {
-    list-style: decimal;
+ul li,
+ol li {
+    margin: 7px 0;
+    padding-left: 4px;
 }
 
-li {
-    margin: 0.35rem 0;
+ul li::marker {
+    color: var(--unifi-blue);
 }
 
-li a,
-p a {
-    text-decoration-color: currentColor;
-}
-
-em,
-i {
+i,
+em {
     font-style: italic;
 }
 
-strong,
-b {
+b,
+strong {
     font-weight: 700;
 }
 
-sup,
-sub {
-    position: relative;
+sup {
+    vertical-align: super;
     font-size: 0.75em;
     line-height: 0;
-    vertical-align: baseline;
-}
-
-sup {
-    top: -0.5em;
 }
 
 sub {
-    bottom: -0.25em;
+    vertical-align: sub;
+    font-size: 0.75em;
+    line-height: 0;
 }
 
-/* Tables */
+/* Link: blu UniFi, senza il vecchio oro/rosso */
+a {
+    color: var(--unifi-blue);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+a:hover,
+a:focus {
+    color: var(--unifi-blue-dark);
+    text-decoration-thickness: 2px;
+}
+
+a:active {
+    color: #000000;
+}
+
+a.current {
+    color: var(--unifi-blue-dark);
+    font-weight: 700;
+}
+
+:focus-visible {
+    outline: 3px solid var(--unifi-cyan);
+    outline-offset: 3px;
+}
+
+/* ==========================================================
+   BANNER / HERO
+   Il portale UniFi usa fotografie a tutta larghezza con un
+   riquadro blu semitrasparente sovrapposto in basso.
+   ========================================================== */
+.banner {
+    position: relative;
+    width: min(100%, var(--content-width));
+    min-height: 390px;
+    margin: 0 auto;
+    overflow: hidden;
+    background: var(--unifi-bg-soft);
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.banner > img,
+.banner > picture,
+.banner > picture img {
+    display: block;
+    width: 100%;
+    height: 430px;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Titolo della conferenza: riquadro blu in basso a sinistra */
+.top-left {
+    position: absolute;
+    top: auto;
+    right: auto;
+    bottom: 22px;
+    left: 0;
+    width: auto;
+    max-width: min(86%, 850px);
+    height: auto;
+    margin: 0;
+    padding: 22px 34px 19px;
+    background: rgb(0 68 124 / 92%);
+    color: #ffffff;
+    font-size: clamp(2rem, 5.8vw, 4.5rem);
+    font-weight: 700;
+    line-height: 0.98;
+    text-align: left;
+    letter-spacing: -0.045em;
+}
+
+/* Data/luogo: etichetta bianca, non testo con ombra */
+.bottom-right {
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+    width: auto;
+    height: auto;
+    padding: 12px 18px;
+    background: rgb(255 255 255 / 94%);
+    color: var(--unifi-blue-dark);
+    font-size: clamp(1rem, 2vw, 1.35rem);
+    font-weight: 700;
+    line-height: 1.25;
+    text-align: right;
+    text-shadow: none;
+}
+
+.title1,
+.title2,
+.year {
+    color: inherit;
+    text-shadow: none;
+}
+
+.title1,
+.title2 {
+    display: inline;
+}
+
+.year {
+    display: inline-block;
+    margin-left: 0.12em;
+    font-size: 0.62em;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+}
+
+/* ==========================================================
+   NAVIGAZIONE
+   Barra bianca con voci maiuscole e trattino blu superiore,
+   come nella testata del portale UniFi.
+   ========================================================== */
+table.navigation {
+    width: min(100%, var(--content-width));
+    margin: 0 auto 40px;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-top: 1px solid var(--unifi-border);
+    border-bottom: 1px solid var(--unifi-border);
+}
+
+td.navigation {
+    position: relative;
+    width: auto;
+    padding: 24px 14px 20px;
+    border: 0;
+    border-right: 1px solid #edf0f2;
+    font-size: 0.93rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    text-transform: uppercase;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+td.navigation:last-child {
+    border-right: 0;
+}
+
+td.navigation::before {
+    position: absolute;
+    top: 11px;
+    left: 50%;
+    width: 24px;
+    height: 3px;
+    content: "";
+    background: var(--unifi-blue);
+    transform: translateX(-50%);
+    transition: width 160ms ease;
+}
+
+td.navigation:hover::before,
+td.navigation:has(a.current)::before {
+    width: 52px;
+}
+
+td.navigation a {
+    display: block;
+    color: var(--unifi-blue-dark);
+    text-decoration: none;
+}
+
+td.navigation a:hover,
+td.navigation a:focus,
+td.navigation a.current {
+    color: var(--unifi-blue);
+}
+
+/* Tabelle generali */
 table {
-    width: min(100% - 48px, 1000px);
-    margin: 1.25rem auto 2rem;
+    width: min(calc(100% - 40px), var(--content-width));
+    margin: 18px auto 32px;
     border-collapse: collapse;
 }
 
 th,
 td {
-    padding: 0.65rem 0.75rem;
+    padding: 12px 14px;
     border-bottom: 1px solid var(--unifi-border);
     text-align: left;
     vertical-align: top;
 }
 
 th {
-    color: var(--unifi-blue);
+    background: var(--unifi-blue-light);
+    color: var(--unifi-blue-dark);
     font-weight: 700;
 }
 
-/*
- * Header istituzionale consigliato.
- * Inserire qui il file ufficiale del marchio UniFi in versione negativa.
- */
-.unifi-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-    min-height: 128px;
-    padding: 24px 40px;
-    background: var(--unifi-blue);
-    color: var(--unifi-white);
-}
-
-.unifi-brand {
-    flex: 0 0 auto;
-}
-
-.unifi-brand img {
-    display: block;
-    width: clamp(210px, 28vw, 300px);
-    min-width: 151px; /* circa 2,5 cm a 96 dpi */
-}
-
-.unifi-event-name {
-    max-width: 560px;
-    color: var(--unifi-white);
-    font-size: clamp(1.4rem, 3vw, 2.35rem);
-    font-weight: 400;
-    line-height: 1.15;
-    text-align: right;
-}
-
-/* Banner del template originale */
-.banner {
-    position: relative;
-    min-height: 300px;
-    overflow: hidden;
-    background: var(--unifi-blue);
-    color: var(--unifi-white);
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-.banner > img {
-    display: block;
-    width: 100%;
-    min-height: 300px;
-    object-fit: cover;
-    opacity: 0.34;
-}
-
-.banner::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, rgb(0 31 91 / 96%), rgb(0 31 91 / 58%));
-    pointer-events: none;
-}
-
-.top-left,
-.bottom-right {
-    z-index: 1;
-}
-
-.top-left {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: min(75%, 780px);
-    height: auto;
-    padding: 34px 40px 20px;
-    background: transparent;
-    color: var(--unifi-white);
-    font-size: clamp(2.2rem, 6vw, 4.8rem);
-    font-weight: 400;
-    line-height: 0.98;
-    text-align: left;
-}
-
-.bottom-right {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: min(72%, 650px);
-    height: auto;
-    padding: 20px 40px 34px;
-    color: var(--unifi-white);
-    font-size: clamp(1.15rem, 3vw, 2rem);
-    line-height: 1.35;
-    text-align: right;
-    text-shadow: none;
-}
-
-/* Titolo dell'evento: niente rosa o colori estranei alla palette UniFi */
-.title1,
-.title2,
-.year {
-    color: var(--unifi-white);
-    text-shadow: none;
-}
-
-.title1,
-.title2 {
-    font-weight: 400;
-}
-
-.year {
-    font-size: 0.62em;
-    font-weight: 300;
-    white-space: nowrap;
-}
-
-/* Navigation */
-table.navigation {
-    width: 100%;
-    margin: 0;
-    border-collapse: collapse;
-    background: var(--unifi-white);
-    border-bottom: 4px solid var(--unifi-blue);
-}
-
-td.navigation {
-    width: auto;
-    padding: 0;
-    border: 0;
-    font-size: 1.05rem;
-    text-align: center;
-    vertical-align: middle;
-    white-space: normal;
-}
-
-td.navigation a {
-    display: block;
-    min-height: 48px;
-    padding: 0.8rem 1rem;
-    color: var(--unifi-blue);
-    font-weight: 600;
-    text-decoration: none;
-}
-
-td.navigation a:hover,
-td.navigation a:focus-visible {
-    background: var(--unifi-light);
-    color: var(--unifi-black);
-}
-
-td.navigation a.current,
-td.navigation a[aria-current="page"] {
-    background: var(--unifi-blue);
-    color: var(--unifi-white);
-}
-
-/* Sponsor images */
+/* Sponsor */
 table.sponsors {
-    width: min(100% - 48px, 800px);
+    width: min(calc(100% - 40px), 940px);
+    margin-top: 42px;
+    background: #ffffff;
 }
 
 td.sponsor {
     width: 33.333%;
-    padding: 1rem;
-    border-bottom: 0;
+    padding: 22px 28px;
+    border: 0;
     text-align: center;
     vertical-align: middle;
     white-space: normal;
@@ -398,20 +400,22 @@ td.sponsor {
 td.sponsor img {
     width: auto;
     max-width: 100%;
-    max-height: 110px;
+    max-height: 95px;
     object-fit: contain;
 }
 
-/* Program page */
+/* Programma */
 table.plenary {
-    padding-top: 0.5rem;
-    background: var(--unifi-white);
+    padding-top: 0;
+    background: #ffffff;
+    border-top: 4px solid var(--unifi-blue);
 }
 
 td.room {
     width: 90%;
     height: auto;
-    padding: 1rem 0.75rem 0.35rem;
+    padding: 16px 16px 8px;
+    border-bottom: 0;
     color: var(--unifi-blue);
     font-size: 1.35rem;
     font-weight: 700;
@@ -419,10 +423,11 @@ td.room {
 }
 
 td.date {
-    width: 145px;
-    padding: 1rem 1rem 0.35rem 0.5rem;
+    width: 150px;
+    padding: 16px 18px 8px 8px;
+    border-bottom: 0;
     color: var(--unifi-muted);
-    font-weight: 600;
+    font-weight: 700;
     text-align: right;
     vertical-align: top;
     white-space: nowrap;
@@ -432,45 +437,47 @@ td.title,
 td.title-special {
     width: 90%;
     height: auto;
-    padding: 0.35rem 0.75rem;
-    color: var(--unifi-blue);
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 1.25rem;
-    font-weight: 600;
+    padding: 8px 16px;
+    color: var(--unifi-text);
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 1.22rem;
+    font-weight: 700;
+    line-height: 1.3;
     text-shadow: none;
     vertical-align: top;
 }
 
 td.title-special {
-    padding-top: 0.8rem;
-    border-top: 3px solid var(--unifi-blue);
+    color: var(--unifi-blue);
     font-size: 1.35rem;
 }
 
 td.speaker {
-    padding: 0.35rem 0.75rem;
+    padding: 4px 16px 8px;
     color: var(--unifi-muted);
     font-size: 1rem;
     font-style: italic;
 }
 
 td.abstract {
-    padding: 0.35rem 0.75rem 1.2rem;
+    padding: 8px 16px 22px;
     font-size: 1rem;
+    line-height: 1.55;
 }
 
 td.abstract img {
     display: block;
-    margin: 0.5rem auto 1rem;
+    margin: 12px auto;
 }
 
-/* Registration and directions */
+/* Iframe e immagini */
 iframe.registration,
 iframe.directions {
     display: block;
-    width: min(100% - 48px, 800px);
-    margin: 1.5rem auto 2rem;
+    width: min(calc(100% - 40px), 900px);
+    margin: 28px auto 42px;
     border: 1px solid var(--unifi-border);
+    background: #ffffff;
 }
 
 iframe.registration {
@@ -478,87 +485,256 @@ iframe.registration {
 }
 
 iframe.directions {
-    height: 450px;
+    height: 440px;
 }
 
 img.center {
     display: block;
-    width: min(100% - 48px, 720px);
-    margin: 1.5rem auto 2rem;
+    width: min(calc(100% - 40px), 780px);
+    margin: 28px auto 42px;
 }
 
-/* Flyers */
+/* Flyer */
 table.flyers {
-    width: min(100% - 48px, 800px);
+    width: min(calc(100% - 40px), 920px);
 }
 
 td.flyer {
     width: 50%;
-    padding: 1rem;
-    border-bottom: 0;
+    padding: 18px;
+    border: 0;
     text-align: center;
-    vertical-align: middle;
+    vertical-align: top;
     white-space: normal;
 }
 
 td.flyer img {
-    width: 100%;
+    max-width: 100%;
+    border: 1px solid var(--unifi-border);
 }
 
+/* Pulsanti opzionali per link importanti */
+.button,
+a.button,
+.btn {
+    display: inline-block;
+    padding: 11px 18px;
+    border: 2px solid var(--unifi-blue);
+    background: var(--unifi-blue);
+    color: #ffffff;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 150ms ease, color 150ms ease;
+}
+
+.button:hover,
+a.button:hover,
+.btn:hover {
+    background: #ffffff;
+    color: var(--unifi-blue);
+}
+
+/* Box informativo, utile per iscrizioni/scadenze */
+.notice,
+.info-box {
+    width: min(calc(100% - 40px), var(--reading-width));
+    margin: 28px auto;
+    padding: 20px 24px;
+    border-left: 6px solid var(--unifi-blue);
+    background: var(--unifi-blue-light);
+}
+
+/* Footer nello stile del portale */
 footer {
-    width: min(100% - 48px, var(--unifi-text-width));
-    margin: 5rem auto 0;
-    padding-top: 1.25rem;
-    border-top: 1px solid var(--unifi-border);
+    width: 100%;
+    max-width: none;
+    margin-top: 90px;
+    padding: 38px max(20px, calc((100% - var(--content-width)) / 2));
+    background: var(--unifi-blue-dark);
+    color: #ffffff;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    text-align: left;
+}
+
+footer a {
+    color: #ffffff;
+    text-decoration-color: rgb(255 255 255 / 70%);
+}
+
+footer a:hover,
+footer a:focus {
+    color: #ffffff;
+}
+
+/* Eventuale HTML più vicino alla testata ufficiale */
+.utility-bar {
+    min-height: 34px;
+    padding: 7px max(20px, calc((100% - var(--content-width)) / 2));
+    background: var(--unifi-blue);
+    color: #ffffff;
+    font-size: 0.78rem;
+    text-align: right;
+}
+
+.utility-bar a {
+    margin-left: 18px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    width: min(calc(100% - 40px), var(--content-width));
+    min-height: 118px;
+    margin: 0 auto;
+    padding: 22px 0 16px;
+    background: #ffffff;
+}
+
+.site-logo img {
+    display: block;
+    width: clamp(150px, 19vw, 205px);
+}
+
+.site-event {
+    color: var(--unifi-blue-dark);
+    font-size: clamp(1.35rem, 3vw, 2.25rem);
+    font-weight: 700;
+    text-align: right;
+}
+
+.breadcrumbs {
+    width: min(calc(100% - 40px), var(--content-width));
+    margin: 24px auto 0;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--unifi-border);
     color: var(--unifi-muted);
-    font-size: 0.875rem;
-    text-align: center;
+    font-size: 0.88rem;
+}
+
+.breadcrumbs a {
+    color: var(--unifi-blue);
+    text-decoration: none;
 }
 
 /* Responsive */
-@media (max-width: 760px) {
-    body {
-        width: 100%;
-        margin: 0;
-        box-shadow: none;
-    }
-
-    .unifi-header {
-        align-items: flex-start;
-        flex-direction: column;
-        padding: 22px 24px;
-    }
-
-    .unifi-event-name {
-        text-align: left;
+@media (max-width: 900px) {
+    body::before {
+        height: 12px;
+        border-bottom-width: 3px;
     }
 
     .banner,
-    .banner > img {
-        min-height: 360px;
+    .banner > img,
+    .banner > picture,
+    .banner > picture img {
+        min-height: 330px;
+        height: 330px;
     }
 
     .top-left {
-        width: 100%;
-        padding: 28px 24px 16px;
+        right: 18px;
+        bottom: 18px;
+        left: 0;
+        max-width: calc(100% - 18px);
+        padding: 18px 22px 16px;
     }
 
     .bottom-right {
-        width: 100%;
-        padding: 16px 24px 28px;
-        text-align: left;
+        display: none;
     }
 
     table.navigation,
     table.navigation tbody,
     table.navigation tr {
         display: block;
+        width: 100%;
     }
 
     td.navigation {
-        display: inline-block;
-        width: 50%;
-        vertical-align: top;
+        display: block;
+        width: 100%;
+        padding: 15px 20px;
+        border-right: 0;
+        border-bottom: 1px solid var(--unifi-border);
+        text-align: left;
+        white-space: normal;
+    }
+
+    td.navigation::before {
+        top: 50%;
+        left: 0;
+        width: 4px;
+        height: 26px;
+        transform: translateY(-50%);
+    }
+
+    td.navigation:hover::before,
+    td.navigation:has(a.current)::before {
+        width: 4px;
+        height: 38px;
+    }
+
+    .site-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .site-event {
+        text-align: left;
+    }
+}
+
+@media (max-width: 620px) {
+    body > h1,
+    body > h2,
+    body > h3,
+    body > h4,
+    body > p,
+    body > ul,
+    body > ol,
+    body > table,
+    main,
+    .content,
+    .page-content {
+        width: min(calc(100% - 28px), var(--content-width));
+    }
+
+    h1 {
+        margin-top: 36px;
+    }
+
+    p,
+    li,
+    th,
+    td {
+        font-size: 1rem;
+    }
+
+    .banner,
+    .banner > img,
+    .banner > picture,
+    .banner > picture img {
+        min-height: 270px;
+        height: 270px;
+    }
+
+    .top-left {
+        right: 12px;
+        bottom: 12px;
+        max-width: calc(100% - 12px);
+        padding: 15px 17px 14px;
+    }
+
+    table,
+    table.sponsors,
+    table.flyers {
+        width: calc(100% - 28px);
     }
 
     table:not(.navigation),
@@ -566,58 +742,36 @@ footer {
     table:not(.navigation) tr,
     table:not(.navigation) th,
     table:not(.navigation) td {
-        max-width: 100%;
-    }
-
-    td.date {
-        width: 110px;
-        white-space: normal;
-    }
-
-    iframe.registration {
-        height: 1100px;
-    }
-}
-
-@media (max-width: 480px) {
-    td.navigation {
+        display: block;
         width: 100%;
     }
 
-    table.sponsors,
-    table.sponsors tbody,
-    table.sponsors tr,
-    table.flyers,
-    table.flyers tbody,
-    table.flyers tr {
-        display: block;
+    td.date {
+        padding-bottom: 2px;
+        text-align: left;
     }
 
     td.sponsor,
     td.flyer {
-        display: block;
-        width: 100%;
+        padding: 18px 8px;
+    }
+
+    footer {
+        margin-top: 64px;
+        padding: 30px 20px;
     }
 }
 
-/* Printing */
-@media print {
-    html,
-    body {
-        background: var(--unifi-white);
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
     }
 
-    body {
-        width: 100%;
-        margin: 0;
-        box-shadow: none;
-    }
-
-    a {
-        color: var(--unifi-black);
-    }
-
-    .banner::after {
-        background: rgb(0 31 91 / 85%);
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
     }
 }
