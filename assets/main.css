@@ -68,6 +68,9 @@ img {
 }
 
 /* Contenuto centrato */
+
+
+/* Contenuto centrato */
 body > h1,
 body > h2,
 body > h3,
@@ -85,11 +88,24 @@ main,
     margin-right: auto;
     margin-left: auto;
 }
-/*Aggiunte*/
+
+/* Contenuto delle pagine */
 .page-content {
-    width: min(100%, 1100px);
+    width: min(calc(100% - 40px), 1100px);
     margin: 0 auto;
-    padding-inline: clamp(24px, 5vw, 64px);
+    padding: 32px 50px;
+}
+.page-content p,
+.page-content h1,
+.page-content h2,
+.page-content h3,
+.page-content h4,
+.page-content ul,
+.page-content ol,
+.page-content table {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
 }
 /* Tipografia */
 h1,
