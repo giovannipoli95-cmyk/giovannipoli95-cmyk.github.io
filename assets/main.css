@@ -179,28 +179,15 @@ img {
         box-shadow 180ms ease;
 }
 
-/* Piccolo nome del sito, nello stile della testata originale */
-.main-navigation::before {
-    position: absolute;
-    top: 50%;
-    left: max(24px, calc((100% - var(--content-width)) / 2));
-    content: "SIS-Bayes 2027";
-    color: #ffffff;
-    font-size: 1.28rem;
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: 0.015em;
-    transform: translateY(-50%);
-}
 
 .navigation-inner {
     display: flex;
     align-items: stretch;
-    justify-content: flex-end;
+    justify-content: center;
     width: min(calc(100% - 40px), var(--content-width));
     height: 100%;
     margin: 0 auto;
-    padding-left: 250px;
+    padding-left: 0;
 }
 
 .navigation-inner a {
@@ -263,8 +250,7 @@ img {
 }
 
 /* Ombra leggera per la leggibilità sul banner */
-.navigation-inner a,
-.main-navigation::before {
+.navigation-inner a {
     text-shadow: 0 1px 5px rgb(0 0 0 / 36%);
 }
 
@@ -615,17 +601,12 @@ footer a:focus {
         display: none;
     }
 
-    .main-navigation::before {
-        left: 18px;
-        font-size: 1rem;
-    }
-
     .navigation-inner {
-        justify-content: flex-start;
+        justify-content: center;
         width: max-content;
         min-width: 100%;
         margin: 0;
-        padding-left: 170px;
+        padding-left: 0;
     }
 
     .navigation-inner a {
@@ -647,14 +628,6 @@ footer a:focus {
 }
 
 @media (max-width: 620px) {
-    .main-navigation::before {
-        content: "SIS-Bayes";
-        left: 14px;
-    }
-
-    .navigation-inner {
-        padding-left: 135px;
-    }
 
     .navigation-inner a {
         min-width: 112px;
