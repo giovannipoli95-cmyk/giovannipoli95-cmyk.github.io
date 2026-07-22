@@ -79,13 +79,16 @@ img {
 .banner {
     position: relative;
     width: 100%;
-    height: clamp(390px, 43vw, 620px);
+    height: clamp(430px, 46vw, 650px);
+    padding-top: 78px;
     margin: 0;
     overflow: hidden;
     background: var(--background-soft);
 }
 
 .banner > img {
+    position: absolute;
+    inset: 0;
     display: block;
     width: 100%;
     height: 100%;
@@ -154,8 +157,9 @@ img {
 }
 
 /* ==========================================================
-   NAVIGAZIONE STICKY
-   Scorre con la pagina e resta visibile in alto.
+   NAVIGAZIONE ISPIRATA A SISBAYES 2025 / HIMALAYAS
+   Barra trasparente sovrapposta all'immagine, logo a sinistra,
+   voci a destra e comportamento sticky.
    ========================================================== */
 
 .main-navigation {
@@ -163,60 +167,78 @@ img {
     top: 0;
     z-index: 1000;
     width: 100%;
-    margin: 0 0 42px;
-    background: rgb(255 255 255 / 72%);
-    border-top: 1px solid rgb(255 255 255 / 62%);
-    border-bottom: 1px solid rgb(0 68 124 / 16%);
-    box-shadow:
-        0 1px 2px rgb(0 0 0 / 4%),
-        0 10px 28px rgb(0 31 91 / 10%);
-    backdrop-filter: blur(16px) saturate(145%);
-    -webkit-backdrop-filter: blur(16px) saturate(145%);
+    height: 78px;
+    margin: 0 0 -78px;
+    background: rgb(0 31 91 / 34%);
+    border-bottom: 1px solid rgb(255 255 255 / 22%);
+    box-shadow: none;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition:
+        background-color 180ms ease,
+        box-shadow 180ms ease;
+}
+
+/* Piccolo nome del sito, nello stile della testata originale */
+.main-navigation::before {
+    position: absolute;
+    top: 50%;
+    left: max(24px, calc((100% - var(--content-width)) / 2));
+    content: "SIS-Bayes 2027";
+    color: #ffffff;
+    font-size: 1.28rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.015em;
+    transform: translateY(-50%);
 }
 
 .navigation-inner {
     display: flex;
     align-items: stretch;
-    justify-content: center;
+    justify-content: flex-end;
     width: min(calc(100% - 40px), var(--content-width));
+    height: 100%;
     margin: 0 auto;
+    padding-left: 250px;
 }
 
 .navigation-inner a {
     position: relative;
     display: flex;
-    flex: 1 1 0;
+    flex: 0 0 auto;
     align-items: center;
     justify-content: center;
-    min-height: var(--navigation-height);
-    padding: 10px 20px;
-    border-right: 1px solid rgb(0 68 124 / 10%);
+    min-height: 78px;
+    padding: 0 18px;
+    border: 0;
     background: transparent;
-    color: var(--unifi-blue-dark);
-    font-size: 0.92rem;
+    color: rgb(255 255 255 / 94%);
+    font-size: 0.86rem;
     font-weight: 700;
     line-height: 1.2;
-    letter-spacing: 0.045em;
+    letter-spacing: 0.04em;
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
     transition:
-        color 160ms ease,
-        background-color 160ms ease;
+        color 150ms ease,
+        background-color 150ms ease;
 }
 
 .navigation-inner a:first-child {
-    border-left: 1px solid rgb(0 68 124 / 10%);
+    border-left: 0;
 }
 
+/* Linea sottile animata sotto la voce */
 .navigation-inner a::after {
     position: absolute;
     right: 50%;
-    bottom: 0;
+    bottom: 15px;
     left: 50%;
-    height: 4px;
+    height: 2px;
     content: "";
-    background: var(--unifi-blue);
+    background: #ffffff;
     transition:
         right 180ms ease,
         left 180ms ease;
@@ -224,20 +246,26 @@ img {
 
 .navigation-inner a:hover,
 .navigation-inner a:focus-visible {
-    background: rgb(0 68 124 / 9%);
-    color: var(--unifi-blue);
+    background: rgb(255 255 255 / 10%);
+    color: #ffffff;
 }
 
 .navigation-inner a.current {
-    background: rgb(255 255 255 / 38%);
-    color: var(--unifi-blue);
+    background: transparent;
+    color: #ffffff;
 }
 
 .navigation-inner a:hover::after,
 .navigation-inner a:focus-visible::after,
 .navigation-inner a.current::after {
-    right: 18%;
-    left: 18%;
+    right: 18px;
+    left: 18px;
+}
+
+/* Ombra leggera per la leggibilità sul banner */
+.navigation-inner a,
+.main-navigation::before {
+    text-shadow: 0 1px 5px rgb(0 0 0 / 36%);
 }
 
 /* ==========================================================
@@ -575,8 +603,10 @@ footer a:focus {
     }
 
     .main-navigation {
+        height: 68px;
+        margin-bottom: -68px;
         overflow-x: auto;
-        margin-bottom: 32px;
+        background: rgb(0 31 91 / 54%);
         scrollbar-width: none;
         overscroll-behavior-x: contain;
     }
@@ -585,19 +615,29 @@ footer a:focus {
         display: none;
     }
 
+    .main-navigation::before {
+        left: 18px;
+        font-size: 1rem;
+    }
+
     .navigation-inner {
         justify-content: flex-start;
         width: max-content;
         min-width: 100%;
         margin: 0;
+        padding-left: 170px;
     }
 
     .navigation-inner a {
         flex: 0 0 auto;
-        min-width: 145px;
-        min-height: 58px;
-        padding: 8px 18px;
-        font-size: 0.84rem;
+        min-width: 130px;
+        min-height: 68px;
+        padding: 0 14px;
+        font-size: 0.78rem;
+    }
+
+    .navigation-inner a::after {
+        bottom: 11px;
     }
 
     .page-content {
@@ -607,8 +647,23 @@ footer a:focus {
 }
 
 @media (max-width: 620px) {
+    .main-navigation::before {
+        content: "SIS-Bayes";
+        left: 14px;
+    }
+
+    .navigation-inner {
+        padding-left: 135px;
+    }
+
+    .navigation-inner a {
+        min-width: 112px;
+        padding: 0 11px;
+        font-size: 0.72rem;
+    }
+
     .banner {
-        height: 300px;
+        height: 330px;
     }
 
     .hero-title {
@@ -669,7 +724,7 @@ footer a:focus {
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
     .main-navigation {
-        background: rgb(255 255 255 / 94%);
+        background: rgb(0 31 91 / 68%);
     }
 }
 
