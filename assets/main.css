@@ -85,7 +85,12 @@ main,
     margin-right: auto;
     margin-left: auto;
 }
-
+/*Aggiunte*/
+.page-content {
+    width: min(100%, 1100px);
+    margin: 0 auto;
+    padding-inline: clamp(24px, 5vw, 64px);
+}
 /* Tipografia */
 h1,
 h2,
