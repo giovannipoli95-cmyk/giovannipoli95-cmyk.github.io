@@ -1,69 +1,206 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 
 <head>
-    <base href="..">
-    <link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
-    <link rel="stylesheet" type="text/css" media="all" href="assets/main.css"/>
-    <meta name="description" content="Conference Template">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <base href="../">
+
+    <link rel="shortcut icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" type="text/css" media="all" href="assets/main.css?v=10">
+
+    <meta name="description" content="Registration information for SIS-Bayes 2027">
     <meta name="resource-type" content="document">
     <meta name="distribution" content="global">
-    <meta name="KeyWords" content="Conference">
-    <title>Registration | Conference Template</title>
+    <meta name="keywords" content="SIS-Bayes 2027, registration, Bayesian statistics, conference">
+
+    <title>Registration | SIS-Bayes 2027</title>
 </head>
 
 <body>
 
-    <div class="banner">
-        <img src="assets/banner.jpg" alt="Conference Template Banner">
-        <div class="top-left">
-            <span class="title1">Conference</span><span class="title2">Template</span> <span class="year">2525</span>
+    <nav class="main-navigation" aria-label="Main navigation">
+        <div class="navigation-inner">
+            <a title="About SIS-Bayes 2027" href=".">
+                About
+            </a>
+
+            <a class="current"
+               aria-current="page"
+               title="Register for the Conference"
+               href="registration">
+                Registration
+            </a>
+
+            <a title="Conference Program" href="program">
+                Program
+            </a>
+
+            <a title="Conference Poster Session" href="poster-session">
+                Poster Session
+            </a>
+
+            <a title="Conference Organization" href="./#organization">
+                Organization
+            </a>
+
+            <a title="Directions to the Conference" href="directions">
+                Directions
+            </a>
         </div>
-        <div class="bottom-right">
-            June 31, 2525 <br> University Name, and City Maybe
+    </nav>
+
+    <header class="site-hero compact-hero">
+        <div class="banner">
+            <img src="assets/banner.JPG"
+                 alt="Florence panorama for SIS-Bayes 2027">
+
+            <div class="hero-title">
+                <span class="title1">Registration</span>
+            </div>
+
+            <div class="hero-details">
+                SIS-Bayes 2027<br>
+                University of Florence
+            </div>
         </div>
-    </div>
+    </header>
 
-    <table class="navigation">
-        <tr>
-            <td class="navigation">
-                <a title="Conference Home Page" href=".">Home</a>
-            </td>
-            <td class="navigation">
-                <a class="current" title="Register for the Conference" href="registration">Registration</a>
-            </td>
-            <td class="navigation">
-                <a title="Conference Program" href="program">Program</a> 
-            </td>
-            <td class="navigation">
-                <a title="Directions to the Conference" href="directions">Directions</a>
-            </td>
-            <td class="navigation">
-                <a title="Conference Flyer" href="flyer">Flyer</a>
-            </td>
-        </tr>
-    </table>
+    <main class="page-content registration-page">
 
-    <br>
+        <section class="conference-section" aria-labelledby="registration-title">
+            <h2 id="registration-title">Registration</h2>
 
-    <p>
-        Here&rsquo;s where you provide instructions how to register for your conference.
-        We used a <a href="https://www.google.com/forms/about/">Google Form</a> 
-        and embedded it into an <i>iframe</i> (it&rsquo;s commented out in the html here).
-    </p>
-    <!--
-    <iframe class="registration" src="EMBED LINK FOR GOOGLE FORM HERE"></iframe>
-    -->
-    <p>
-        Here&rsquo;s another paragraph of filler text:
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dignissim et est et euismod. Fusce et metus tempus, pellentesque ex at, convallis nulla. Ut fringilla commodo tincidunt. Fusce sed est eu massa placerat iaculis eu at mauris. Nullam ut mollis nisi, quis malesuada risus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam ipsum tortor, suscipit non tincidunt vel, bibendum in libero. Nulla facilisi. Pellentesque vitae neque metus. Cras quis est pharetra, vestibulum nisl et, viverra ipsum. Etiam porta dignissim purus, quis tempor metus volutpat eu. Praesent pulvinar libero eget purus tincidunt finibus.
-    </p>
+            <p>
+                Registration for SIS-Bayes 2027 requires payment of the
+                registration fee by bank transfer.
+            </p>
+
+            <div class="registration-notice">
+                <strong>Registration opening date:</strong>
+                <span>To be announced</span>
+            </div>
+        </section>
+
+        <section class="conference-section" aria-labelledby="fees-title">
+            <h2 id="fees-title">Registration Fees</h2>
+
+            <div class="fee-table-wrapper">
+                <table class="registration-fees">
+                    <thead>
+                        <tr>
+                            <th scope="col">Category</th>
+                            <th scope="col">Early registration</th>
+                            <th scope="col">Regular registration</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Regular participant</td>
+                            <td>€ PLACEHOLDER</td>
+                            <td>€ PLACEHOLDER</td>
+                        </tr>
+                        <tr>
+                            <td>Student / junior participant</td>
+                            <td>€ PLACEHOLDER</td>
+                            <td>€ PLACEHOLDER</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="small-note">
+                Fee categories, amounts and deadlines will be confirmed later.
+            </p>
+        </section>
+
+        <section class="conference-section" aria-labelledby="payment-title">
+            <h2 id="payment-title">Payment by Bank Transfer</h2>
+
+            <p>
+                Please use the following bank details. Bank charges, if any,
+                must be covered by the participant.
+            </p>
+
+            <div class="bank-details" aria-label="Bank transfer details">
+                <div class="bank-detail-row">
+                    <span class="bank-label">Account holder</span>
+                    <strong>PLACEHOLDER</strong>
+                </div>
+
+                <div class="bank-detail-row iban-row">
+                    <span class="bank-label">IBAN</span>
+                    <strong class="iban-value">IT XXXXXX</strong>
+                </div>
+
+                <div class="bank-detail-row">
+                    <span class="bank-label">BIC / SWIFT</span>
+                    <strong>PLACEHOLDER</strong>
+                </div>
+
+                <div class="bank-detail-row">
+                    <span class="bank-label">Bank</span>
+                    <strong>PLACEHOLDER</strong>
+                </div>
+
+                <div class="bank-detail-row payment-reference-row">
+                    <span class="bank-label">Payment reference</span>
+                    <strong>PLACEHOLDER</strong>
+                </div>
+            </div>
+
+            <div class="important-payment-note">
+                <h3>Important</h3>
+                <p>
+                    The payment reference must be entered exactly as indicated
+                    above. Please retain a copy of the bank-transfer receipt.
+                </p>
+            </div>
+        </section>
+
+        <section class="conference-section" aria-labelledby="procedure-title">
+            <h2 id="procedure-title">How to Complete Your Registration</h2>
+
+            <ol class="registration-steps">
+                <li>
+                    Pay the applicable registration fee by bank transfer.
+                </li>
+                <li>
+                    Complete the online registration form.
+                    <span class="inline-placeholder">Registration form: PLACEHOLDER</span>
+                </li>
+                <li>
+                    Upload or send a copy of the bank-transfer receipt, if requested.
+                </li>
+                <li>
+                    Wait for the registration confirmation email.
+                </li>
+            </ol>
+        </section>
+
+        <section class="conference-section" aria-labelledby="contact-title">
+            <h2 id="contact-title">Registration Support</h2>
+
+            <p>
+                For questions concerning registration or payment, please contact:
+            </p>
+
+            <div class="contact-box">
+                <strong>SIS-Bayes 2027 Organizing Committee</strong>
+                <a href="mailto:PLACEHOLDER@unifi.it">PLACEHOLDER@unifi.it</a>
+            </div>
+        </section>
+
+    </main>
 
     <footer>
-        &copy; Conference Organizers
-        &nbsp;|&nbsp; Design by <a href="https://github.com/mikepierce">Mike Pierce</a>
+        <div class="footer-inner">
+            &copy; SIS-Bayes 2027 Organizing Committee
+            <span aria-hidden="true"> | </span>
+            University of Florence
+        </div>
     </footer>
 
 </body>
 </html>
-
