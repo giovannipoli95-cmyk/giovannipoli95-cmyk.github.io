@@ -867,3 +867,203 @@ footer a:focus {
         max-width: none;
     }
 }
+
+
+/* ==========================================================
+   REGISTRATION PAGE
+   ========================================================== */
+
+.compact-hero .banner {
+    height: clamp(310px, 35vw, 460px);
+}
+
+.registration-page {
+    max-width: 1050px;
+}
+
+.registration-notice {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin: 28px 0 0;
+    padding: 18px 22px;
+    background: var(--unifi-blue-light);
+    border-left: 6px solid var(--unifi-blue);
+}
+
+.registration-notice span {
+    color: var(--unifi-blue-dark);
+    font-weight: 700;
+}
+
+.fee-table-wrapper {
+    margin-top: 28px;
+    overflow-x: auto;
+    border: 1px solid var(--border);
+}
+
+.registration-fees {
+    min-width: 650px;
+    margin: 0;
+}
+
+.registration-fees th,
+.registration-fees td {
+    padding: 16px 18px;
+}
+
+.registration-fees tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.small-note {
+    margin-top: 14px;
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+.bank-details {
+    margin-top: 28px;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 28px rgb(0 31 91 / 8%);
+}
+
+.bank-detail-row {
+    display: grid;
+    grid-template-columns: minmax(170px, 0.45fr) minmax(0, 1fr);
+    gap: 24px;
+    align-items: center;
+    padding: 17px 22px;
+    border-bottom: 1px solid var(--border);
+}
+
+.bank-detail-row:last-child {
+    border-bottom: 0;
+}
+
+.bank-label {
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.035em;
+    text-transform: uppercase;
+}
+
+.iban-row {
+    padding-top: 24px;
+    padding-bottom: 24px;
+    background: var(--unifi-blue-dark);
+    color: #ffffff;
+}
+
+.iban-row .bank-label {
+    color: rgb(255 255 255 / 76%);
+}
+
+.iban-value {
+    color: #ffffff;
+    font-family: "Courier New", Courier, monospace;
+    font-size: clamp(1.35rem, 3vw, 2rem);
+    letter-spacing: 0.08em;
+    overflow-wrap: anywhere;
+}
+
+.payment-reference-row {
+    background: var(--unifi-blue-light);
+}
+
+.payment-reference-row strong {
+    color: var(--unifi-blue-dark);
+    font-size: 1.08rem;
+}
+
+.important-payment-note {
+    margin-top: 24px;
+    padding: 20px 24px;
+    border-left: 6px solid var(--unifi-cyan);
+    background: #f4f9fb;
+}
+
+.important-payment-note h3 {
+    margin: 0 0 8px;
+    font-size: 1.15rem;
+}
+
+.important-payment-note p {
+    margin: 0;
+}
+
+.registration-steps {
+    display: grid;
+    gap: 15px;
+    max-width: none;
+    margin-top: 28px;
+    padding: 0;
+    list-style: none;
+    counter-reset: registration-step;
+}
+
+.registration-steps li {
+    position: relative;
+    min-height: 64px;
+    margin: 0;
+    padding: 18px 20px 18px 72px;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    counter-increment: registration-step;
+}
+
+.registration-steps li::before {
+    position: absolute;
+    top: 50%;
+    left: 18px;
+    display: grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    content: counter(registration-step);
+    background: var(--unifi-blue);
+    border-radius: 50%;
+    color: #ffffff;
+    font-weight: 700;
+    transform: translateY(-50%);
+}
+
+.inline-placeholder {
+    display: block;
+    margin-top: 5px;
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+.contact-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 24px;
+    padding: 22px 24px;
+    background: var(--unifi-blue-light);
+    border-left: 6px solid var(--unifi-blue);
+}
+
+@media (max-width: 700px) {
+    .registration-notice,
+    .contact-box {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .bank-detail-row {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+    .iban-value {
+        font-size: 1.3rem;
+    }
+}
